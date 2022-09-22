@@ -20,7 +20,7 @@ CREATE TABLE Taverns
 	InventoryID INT,
 	InventorySalesID INT
 );
---Crears Inventory Table
+--Creates Inventory Table
 CREATE TABLE Inventory
 (
 	ID INT PRIMARY KEY IDENTITY(1,1),
@@ -30,6 +30,7 @@ CREATE TABLE Inventory
 	UnitsOfMeasure VARCHAR (250)
 );
 
+--Creates TavernServices Table. This isn't a many-to-many table, just outlining services. A seperate Services table and then a many-to-many table would be better
 CREATE TABLE TavernServices
 (
 	ID INT PRIMARY KEY IDENTITY(1,1),

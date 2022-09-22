@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS Sales;
 DROP TABLE IF EXISTS Inventory;
 DROP TABLE IF EXISTS InventorySales;
 DROP TABLE IF EXISTS Classes;
+DROP TABLE IF EXISTS TavernServices;
 
 
 --Creates Taverns Table
@@ -23,12 +24,25 @@ CREATE TABLE Taverns
 CREATE TABLE Inventory
 (
 	ID INT PRIMARY KEY IDENTITY(1,1),
+	TavernId INT FOREIGN KEY (TavernId) REFERENCES Taverns(ID),
+	Item VARCHAR (250),
+	Quantity FLOAT,
+	UnitsOfMeasure VARCHAR (250)
+);
+
+CREATE TABLE TavernServices
+(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	TavernId INT FOREIGN KEY (TavernID) REFERENCES Taverns(ID),
+	TavernService VARCHAR (250),
+	Price FLOAT,
 );
 
 --Creates Sales Table
 CREATE TABLE Sales
 ( 
-	ID INT PRIMARY KEY IDENTITY(1,1)
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	TavernId INT FOREIGN KEY (TavernId) REFERENCES Taverns(ID)
 );
 
 --Creates InventorySales Table
@@ -41,6 +55,7 @@ CREATE TABLE InventorySales
 CREATE TABLE Locations
 (
 	ID INT PRIMARY KEY IDENTITY(1,1),
+	TavernId INT FOREIGN KEY (TavernID) REFERENCES Taverns(ID),
 	LocationName VARCHAR(250)
 );
 
@@ -59,15 +74,16 @@ CREATE TABLE Users
 --Creates Classes Table
 CREATE TABLE Classes
 (
-	ID INT PRIMARY KEY IDENTITY(1,1)
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	UserClass VARCHAR (250),
+
 );
 
 --CREATES BasementRats Table
 CREATE TABLE BasementRats
 (
 	ID INT PRIMARY KEY IDENTITY(1,1),
-	TavernID INT,
+	TavernId INT FOREIGN KEY (TavernId) REFERENCES Taverns(ID),
 	RatName VARCHAR(250)
 );
-
 

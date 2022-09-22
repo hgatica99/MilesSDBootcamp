@@ -1,3 +1,4 @@
+-- Seeding Taverns DB
 INSERT INTO dbo.Taverns 
 (TavernName)
 VALUES ('John''s Tavern')
@@ -38,4 +39,19 @@ VALUES ('Henry')
 INSERT INTO dbo.Users
 (UserName)
 VALUES ('Phil')
+
+--SEEDING Tavern Services DB
+
+INSERT INTO dbo.TavernServices
+(TavernId, TavernService, Price)
+VALUES (1,'Sword Sharpening', 5.99)
+
+INSERT INTO dbo.TavernServices
+(TavernId, TavernService, Price)
+VALUES (1,'Sword Sharpening', 5.99)
+
+-- If this is ran twice, statment conflicts with FOREIGN KEY constraint
+--INSERT INTO dbo.TavernServices
+--(TavernId, TavernService, Price)
+--VALUES (1,'Sword Sharpening', 5.99)
 

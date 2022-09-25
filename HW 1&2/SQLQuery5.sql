@@ -123,3 +123,40 @@ VALUES (5, 5, 360.99, '01/27/2022', 1)
 INSERT INTO Sales
 (TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
 VALUES (3, 3, 140.99, '01/20/2022', 1)
+
+INSERT INTO Sales
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
+VALUES (2, 3, 890.99, '01/20/2022', 1)
+
+INSERT INTO Sales
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
+VALUES (1, 2, 990.99, '01/20/2022', 1)
+
+INSERT INTO Sales
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
+VALUES (4, 5, 790.99, '01/20/2022', 1)
+
+--Seeding GuestStatus Table
+INSERT INTO GuestStatuses
+(StatusName)
+VALUES ('Not-Banned')
+
+INSERT INTO GuestStatuses
+(StatusName)
+VALUES ('Banned')
+--Seeding ServiceStatus Table
+INSERT INTO ServiceStatuses
+(StatusName)
+VALUES ('Active')
+
+INSERT INTO ServiceStatuses
+(StatusName)
+VALUES ('Non-Active')
+--Seeding RoomStatus Table
+INSERT INTO RoomStatuses
+(StatusName)
+VALUES ('Vacant')
+
+INSERT INTO RoomStatuses
+(StatusName)
+VALUES ('Occupied')

@@ -47,6 +47,18 @@ ORDER BY GuestName ASC
 --6
 SELECT TOP 10 SalesPrice
 FROM Sales
+ORDER BY SalesPrice DESC
+
+--7
+SELECT *
+FROM ServiceStatuses
+UNION SELECT *
+FROM GuestStatuses
+UNION SELECT *
+FROM RoomStatuses
+
+--8
+
 
 
 --Syntax to update Table data

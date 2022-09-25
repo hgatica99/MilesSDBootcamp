@@ -1,4 +1,4 @@
--- Seeding Taverns DB
+--Seeding Taverns Table
 INSERT INTO dbo.Taverns 
 (TavernName, OwnerId, LocationId)
 VALUES ('John''s Tavern', 1, 1)
@@ -19,7 +19,7 @@ INSERT INTO dbo.Taverns
 (TavernName, OwnerId, LocationId)
 VALUES ('Greg''s Tavern', 5, 5)
 
---Seeding Users DB
+--Seeding Users Table
 INSERT INTO dbo.Users
 (UserName, RoleId)
 VALUES ('Mike', 1)
@@ -40,24 +40,24 @@ INSERT INTO dbo.Users
 (UserName)
 VALUES ('Phil', 5)
 
---Seeding Guests DB
+--Seeding Guests Table
 INSERT INTO dbo.Guests
-(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
-VALUES ('Tom', 'Doesn''t like Jerry', '04/20/1990', '04/20/1990', 1)
+(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, LevelGroup, StatusId)
+VALUES ('Tom', 'Doesn''t like Jerry', '04/20/1990', '04/20/1990', '1-10', 1)
 
 INSERT INTO dbo.Guests
-(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
-VALUES ('Jerry', 'Doesn''t like Tom', '04/21/1990', '04/21/1990', 1)
+(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, LevelGroup, StatusId)
+VALUES ('Jerry', 'Doesn''t like Tom', '04/21/1990', '04/21/1990', '11-20',1)
 
 INSERT INTO dbo.Guests
-(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
-VALUES ('Bob', 'Doesn''t like Life', '04/22/2001', '04/22/2001', 1)
+(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, LevelGroup, StatusId)
+VALUES ('Bob', 'Doesn''t like Life', '04/22/2001', '04/22/2001', '1-10', 1)
 
 INSERT INTO dbo.Guests
-(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
-VALUES ('Bob', 'Doesn''t like Pizza (Weirdo)', '04/22/2002', '04/22/2002', 1)
+(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, LevelGroup, StatusId)
+VALUES ('Bob', 'Doesn''t like Pizza (Weirdo)', '04/22/2002', '04/22/2002', '41-50', 1)
 
---Seeding Services DB
+--Seeding Services Table
 INSERT INTO dbo.Services
 (Name, TavernId, StatusId)
 VALUES ('Sword Sharpening', 1, 1)
@@ -74,7 +74,7 @@ INSERT INTO dbo.Services
 (Name, TavernId, StatusId)
 VALUES ('Bow Tightening', 1, 1)
 
---Seeding Rooms DB
+--Seeding Rooms Table
 INSERT INTO Rooms
 (RoomName, Price, TavernId, RoomStatusId)
 VALUES ('Room 1', 99, 1, 1)
@@ -87,7 +87,7 @@ INSERT INTO Rooms
 (RoomName, Price, TavernId, RoomStatusId)
 VALUES ('Room 3', 160, 1, 1)
 
---Seeding Sales Tab
+--Seeding Sales Table
 INSERT INTO Sales
 (TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
 VALUES (1, 1, 140.99, '01/02/2022', 1)
@@ -136,6 +136,19 @@ INSERT INTO Sales
 (TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
 VALUES (4, 5, 790.99, '01/20/2022', 1)
 
+--Seeding Stays Table
+INSERT INTO Stays
+(StayRate, SalesId, GuestId, RoomId, StayDate)
+VALUES(790.99, 12, 4, 1, '2/20/2022')
+
+INSERT INTO Stays
+(StayRate, SalesId, GuestId, RoomId, StayDate)
+VALUES(990.99, 11, 1, 2, '2/20/2022')
+
+INSERT INTO Stays
+(StayRate, SalesId, GuestId, RoomId, StayDate)
+VALUES(890.99, 10, 3, 3, '2/20/2022')
+
 --Seeding GuestStatus Table
 INSERT INTO GuestStatuses
 (StatusName)
@@ -160,3 +173,43 @@ VALUES ('Vacant')
 INSERT INTO RoomStatuses
 (StatusName)
 VALUES ('Occupied')
+
+
+--Seeding Levels Table
+INSERT INTO Levels
+(GuestId, ClassId)
+VALUES(1, 1)
+
+INSERT INTO Levels
+(GuestId, ClassId)
+VALUES(2, 2)
+
+INSERT INTO Levels
+(GuestId, ClassId)
+VALUES(3, 3)
+
+INSERT INTO Levels
+(GuestId, ClassId)
+VALUES(4, 4)
+
+INSERT INTO Levels
+(GuestId, ClassId)
+VALUES(5, 6)
+
+--Seeding Classes Table
+
+INSERT INTO Classes
+(ClassName)
+VALUES ('Mage')
+
+INSERT INTO Classes
+(ClassName)
+VALUES ('Warrior')
+
+INSERT INTO Classes
+(ClassName)
+VALUES ('Wizard')
+
+INSERT INTO Classes
+(ClassName)
+VALUES ('Dude')

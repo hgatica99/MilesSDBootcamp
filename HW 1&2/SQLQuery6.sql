@@ -48,8 +48,8 @@ CREATE TABLE Guests
 	GuestNotes VARCHAR(250),
 	GuestBirthDay DATE,
 	GuestCakeDay DATE,
+	LevelGroup VARCHAR (250),
 	StatusId INT
-
 );
 
 CREATE TABLE GuestStatuses

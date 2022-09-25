@@ -20,7 +20,6 @@ FROM Guests
 SELECT *
 FROM Rooms
 
-
 SELECT *
 FROM Sales
 
@@ -57,13 +56,17 @@ FROM GuestStatuses
 UNION SELECT *
 FROM RoomStatuses
 
---8
-
-
+--8	
+SELECT GuestName
+FROM Guests
+UNION SELECT StatusName
+From GuestStatuses
+UNION SELECT ClassName
+FROM Classes
+UNION SELECT LevelGroup
+FROM Guests
 
 --Syntax to update Table data
 UPDATE Taverns
 SET OwnerId = 1
-WHERE ID = 1;
-
---JOIN
+WHERE ID = 1

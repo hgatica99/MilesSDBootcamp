@@ -43,15 +43,20 @@ VALUES ('Phil', 5)
 --Seeding Guests DB
 INSERT INTO dbo.Guests
 (GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
-VALUES ('Tom', 'Doesn''t like Jerry', 04/20/1990, 4/20/1990, 1)
+VALUES ('Tom', 'Doesn''t like Jerry', '04/20/1990', '04/20/1990', 1)
 
 INSERT INTO dbo.Guests
 (GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
-VALUES ('Jerry', 'Doesn''t like Tom', 04/20/1990, 4/20/1990, 1)
+VALUES ('Jerry', 'Doesn''t like Tom', '04/21/1990', '04/21/1990', 1)
 
 INSERT INTO dbo.Guests
 (GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
-VALUES ('Bob', 'Doesn''t like Life', 04/20/1990, 4/20/1990, 1)
+VALUES ('Bob', 'Doesn''t like Life', '04/22/2001', '04/22/2001', 1)
+
+INSERT INTO dbo.Guests
+(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
+VALUES ('Bob', 'Doesn''t like Pizza (Weirdo)', '04/22/2002', '04/22/2002', 1)
+
 --Seeding Services DB
 INSERT INTO dbo.Services
 (Name, TavernId, StatusId)
@@ -68,3 +73,53 @@ VALUES ('Pig Tossing', 1, 1)
 INSERT INTO dbo.Services
 (Name, TavernId, StatusId)
 VALUES ('Bow Tightening', 1, 1)
+
+--Seeding Rooms DB
+INSERT INTO Rooms
+(RoomName, Price, TavernId, RoomStatusId)
+VALUES ('Room 1', 99, 1, 1)
+
+INSERT INTO Rooms
+(RoomName, Price, TavernId, RoomStatusId)
+VALUES ('Room 2', 140, 1, 1)
+
+INSERT INTO Rooms
+(RoomName, Price, TavernId, RoomStatusId)
+VALUES ('Room 3', 160, 1, 1)
+
+--Seeding Sales Tab
+INSERT INTO Sales
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
+VALUES (1, 1, 140.99, '01/02/2022', 1)
+
+INSERT INTO Sales
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
+VALUES (1, 1, 120.99, '01/05/2022', 1)
+
+INSERT INTO Sales
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
+VALUES (2, 1, 290.99, '01/02/2022', 1)
+
+INSERT INTO Sales
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
+VALUES (2, 4, 580.99, '01/18/2022', 1)
+
+INSERT INTO Sales
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
+VALUES (3, 5, 1000.99, '01/02/2022', 1)
+
+INSERT INTO Sales
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
+VALUES (1, 3, 720.99, '01/11/2022', 1)
+
+INSERT INTO Sales
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
+VALUES (4, 2, 680.99, '01/23/2022', 1)
+
+INSERT INTO Sales
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
+VALUES (5, 5, 360.99, '01/27/2022', 1)
+
+INSERT INTO Sales
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
+VALUES (3, 3, 140.99, '01/20/2022', 1)

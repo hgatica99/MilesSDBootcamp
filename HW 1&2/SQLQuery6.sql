@@ -121,6 +121,7 @@ CREATE TABLE Rooms
 (
 	Id INT PRIMARY KEY IDENTITY(1,1),
 	RoomName VARCHAR(250),
+	Price FLOAT,
 	TavernId INT,
 	RoomStatusId INT
 );
@@ -159,4 +160,5 @@ CREATE TABLE BasementRats
 	Id INT PRIMARY KEY IDENTITY(1,1),
 	RatName VARCHAR(250)
 );
+
 

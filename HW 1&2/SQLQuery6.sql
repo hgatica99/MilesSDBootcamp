@@ -88,6 +88,7 @@ CREATE TABLE Received
 CREATE TABLE Services
 (
 	Id INT PRIMARY KEY IDENTITY(1,1),
+	Name VARCHAR(250),
 	TavernId INT,
 	StatusId INT
 );

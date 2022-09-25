@@ -43,8 +43,15 @@ VALUES ('Phil', 5)
 --Seeding Guests DB
 INSERT INTO dbo.Guests
 (GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
-VALUES ('Tom', 'Doesn''t like Jerry ', 04/20/1990, 4/20/1990, 1)
+VALUES ('Tom', 'Doesn''t like Jerry', 04/20/1990, 4/20/1990, 1)
 
+INSERT INTO dbo.Guests
+(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
+VALUES ('Jerry', 'Doesn''t like Tom', 04/20/1990, 4/20/1990, 1)
+
+INSERT INTO dbo.Guests
+(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
+VALUES ('Bob', 'Doesn''t like Life', 04/20/1990, 4/20/1990, 1)
 --Seeding Services DB
 INSERT INTO dbo.Services
 (Name, TavernId, StatusId)

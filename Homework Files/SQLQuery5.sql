@@ -42,20 +42,20 @@ VALUES ('Phil', 5)
 
 --Seeding Guests Table
 INSERT INTO dbo.Guests
-(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, LevelGroup, StatusId)
-VALUES ('Tom', 'Doesn''t like Jerry', '04/20/1990', '04/20/1990', '1-10', 1)
+(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
+VALUES ('Tom', 'Doesn''t like Jerry', '04/20/1990', '04/20/1990', 1)
 
 INSERT INTO dbo.Guests
-(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, LevelGroup, StatusId)
-VALUES ('Jerry', 'Doesn''t like Tom', '04/21/1990', '04/21/1990', '11-20',1)
+(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
+VALUES ('Jerry', 'Doesn''t like Tom', '04/21/1990', '04/21/1990', 1)
 
 INSERT INTO dbo.Guests
-(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, LevelGroup, StatusId)
-VALUES ('Bob', 'Doesn''t like Life', '04/22/2001', '04/22/2001', '1-10', 1)
+(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
+VALUES ('Bob', 'Doesn''t like Life', '04/22/2001', '04/22/2001', 1)
 
 INSERT INTO dbo.Guests
-(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, LevelGroup, StatusId)
-VALUES ('Bob', 'Doesn''t like Pizza (Weirdo)', '04/22/2002', '04/22/2002', '41-50', 1)
+(GuestName, GuestNotes, GuestBirthDay, GuestCakeDay, StatusId)
+VALUES ('Bob', 'Doesn''t like Pizza (Weirdo)', '04/22/2002', '04/22/2002', 1)
 
 --Seeding Services Table
 INSERT INTO dbo.Services
@@ -177,24 +177,24 @@ VALUES ('Occupied')
 
 --Seeding Levels Table
 INSERT INTO Levels
-(GuestId, ClassId)
-VALUES(1, 1)
+(GuestId, ClassId, Level)
+VALUES(1, 1, 12)
 
 INSERT INTO Levels
-(GuestId, ClassId)
-VALUES(2, 2)
+(GuestId, ClassId, Level)
+VALUES(2, 2, 7)
 
 INSERT INTO Levels
-(GuestId, ClassId)
-VALUES(3, 3)
+(GuestId, ClassId, Level)
+VALUES(3, 3, 28)
 
 INSERT INTO Levels
-(GuestId, ClassId)
-VALUES(4, 4)
+(GuestId, ClassId, Level)
+VALUES(4, 4, 4)
 
 INSERT INTO Levels
-(GuestId, ClassId)
-VALUES(5, 6)
+(GuestId, ClassId, Level)
+VALUES(5, 5, 15)
 
 --Seeding Classes Table
 

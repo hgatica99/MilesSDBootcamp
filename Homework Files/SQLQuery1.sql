@@ -1,6 +1,6 @@
 --ALTERS the Table Taverns, and add's the column for Foreign Key
-ALTER TABLE Taverns ADD FOREIGN KEY (OwnerId) REFERENCES Users(RoleId);
-ALTER TABLE Taverns ADD FOREIGN KEY (LocationId) REFERENCES Locations(Id);
+--ALTER TABLE Taverns ADD FOREIGN KEY (OwnerId) REFERENCES Users(RoleId);
+--ALTER TABLE Taverns ADD FOREIGN KEY (LocationId) REFERENCES Locations(Id);
 
 SELECT * 
 FROM Taverns
@@ -15,7 +15,16 @@ SELECT *
 FROM Services
 
 SELECT *
+FROM Classes
+
+SELECT *
+FROM Levels
+
+SELECT *
 FROM Guests
+
+SELECT *
+FROM GuestStatuses
 
 SELECT *
 FROM Rooms
@@ -57,16 +66,28 @@ UNION SELECT *
 FROM RoomStatuses
 
 --8	
-SELECT GuestName
+SELECT GuestName, ClassName,
+CASE 
+	WHEN Levels.Level < 11 THEN '1-10'
+	WHEN Levels.Level > 11 AND Levels.Level < 21 THEN '11-20'
+	WHEN Levels.Level > 20 AND Levels.Level < 31 THEN '21-30'
+	ELSE 'N/A'
+	END AS LevelRange
 FROM Guests
-UNION SELECT StatusName
-From GuestStatuses
-UNION SELECT ClassName
-FROM Classes
-UNION SELECT LevelGroup
-FROM Guests
+JOIN Levels 
+ON Guests.Id = Levels.GuestId 
+Join Classes
+ON Classes.Id = Levels.ClassId
+
 
 --Syntax to update Table data
 UPDATE Taverns
 SET OwnerId = 1
 WHERE ID = 1
+
+SELECT *,
+	CASE
+	WHEN Id < 11 THEN '1-10'
+	ELSE 'N/A'
+	END AS LevelRange
+FROM Levels	

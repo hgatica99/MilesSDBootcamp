@@ -34,13 +34,6 @@ CREATE TABLE Users
 	RoleId INT
 );
 
-CREATE TABLE Levels
-(
-	Id INT PRIMARY KEY IDENTITY(1,1),
-	GuestId INT,
-	ClassId INT
-);
-
 CREATE TABLE Guests
 (	
 	Id INT PRIMARY KEY IDENTITY(1,1),
@@ -48,10 +41,22 @@ CREATE TABLE Guests
 	GuestNotes VARCHAR(250),
 	GuestBirthDay DATE,
 	GuestCakeDay DATE,
-	LevelGroup VARCHAR (250),
-	StatusId INT
+	StatusId INT,
 );
 
+CREATE TABLE Classes
+(
+	Id INT PRIMARY KEY IDENTITY(1,1),
+	ClassName VARCHAR (250),
+);
+
+CREATE TABLE Levels
+(
+	Id INT PRIMARY KEY IDENTITY(1,1),
+	GuestId INT FOREIGN KEY (GuestId) REFERENCES Guests(Id),
+	ClassId INT FOREIGN KEY (ClassId) REFERENCES Classes(Id),
+	Level INT
+);
 CREATE TABLE GuestStatuses
 (
 	Id INT PRIMARY KEY IDENTITY(1,1),
@@ -68,7 +73,7 @@ CREATE TABLE Roles
 CREATE TABLE Supplies
 (
 	Id INT PRIMARY KEY IDENTITY(1,1),
-	TavernId INT FOREIGN KEY (TavernId) REFERENCES Taverns(ID),
+	TavernId INT FOREIGN KEY (TavernId) REFERENCES Taverns(Id),
 	Item VARCHAR (250),
 	Quantity FLOAT,
 	UnitsOfMeasure VARCHAR (250)
@@ -82,7 +87,6 @@ CREATE TABLE Received
 	Amount FLOAT,
 	Cost FLOAT,
 	TavernId INT
-
 );
 
 CREATE TABLE Services
@@ -148,17 +152,8 @@ CREATE TABLE Locations
 	LocationName VARCHAR(250)
 );
 
-CREATE TABLE Classes
-(
-	Id INT PRIMARY KEY IDENTITY(1,1),
-	ClassName VARCHAR (250),
-
-);
-
 CREATE TABLE BasementRats
 (
 	Id INT PRIMARY KEY IDENTITY(1,1),
 	RatName VARCHAR(250)
 );
-
-

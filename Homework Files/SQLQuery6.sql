@@ -1,3 +1,4 @@
+--CREATE DATABASE MilesSDBootcamp
 --DROPS Tables to be recreated with the code below to avoid errors.
 DROP TABLE IF EXISTS Taverns;
 DROP TABLE IF EXISTS Locations;
@@ -66,7 +67,7 @@ CREATE TABLE GuestStatuses
 CREATE TABLE Roles
 (
 	Id INT PRIMARY KEY IDENTITY(1,1),
-	RoleName INT,
+	RoleName VARCHAR (250),
 	RoleDescription VARCHAR(250)
 );
 
@@ -110,7 +111,8 @@ CREATE TABLE Sales
 	GuestId INT,
 	SalesPrice FLOAT,
 	SalesDate DATE,
-	SalesAmount INT
+	SalesAmount INT,
+	ServiceId INT
 );
 
 CREATE TABLE Counts

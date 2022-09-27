@@ -13,11 +13,11 @@ VALUES ('Jake''s Tavern', 3, 3)
 
 INSERT INTO dbo.Taverns 
 (TavernName, OwnerId, LocationId)
-VALUES ('Richie''s Tavern', 4, 4)
+VALUES ('Richie''s Tavern', 4, 2)
 
 INSERT INTO dbo.Taverns 
 (TavernName, OwnerId, LocationId)
-VALUES ('Greg''s Tavern', 5, 5)
+VALUES ('Greg''s Tavern', 5, 1)
 
 --Seeding Users Table
 INSERT INTO dbo.Users
@@ -30,15 +30,15 @@ VALUES ('Kim', 2)
 
 INSERT INTO dbo.Users
 (UserName, RoleId)
-VALUES ('Jim', 3)
+VALUES ('Jim', 1)
 
 INSERT INTO dbo.Users
 (UserName, RoleId)
-VALUES ('Henry', 4)
+VALUES ('Henry', 2)
 
 INSERT INTO dbo.Users
-(UserName)
-VALUES ('Phil', 5)
+(UserName, RoleId)
+VALUES ('Phil', 2)
 
 --Seeding Guests Table
 INSERT INTO dbo.Guests
@@ -89,52 +89,52 @@ VALUES ('Room 3', 160, 1, 1)
 
 --Seeding Sales Table
 INSERT INTO Sales
-(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
-VALUES (1, 1, 140.99, '01/02/2022', 1)
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount, ServiceId)
+VALUES (1, 1, 140.99, '01/02/2022', 1, 1)
 
 INSERT INTO Sales
-(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
-VALUES (1, 1, 120.99, '01/05/2022', 1)
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount, ServiceId)
+VALUES (1, 1, 120.99, '01/05/2022', 1, 2)
 
 INSERT INTO Sales
-(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
-VALUES (2, 1, 290.99, '01/02/2022', 1)
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount, ServiceId)
+VALUES (2, 1, 290.99, '01/02/2022', 1, 3)
 
 INSERT INTO Sales
-(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
-VALUES (2, 4, 580.99, '01/18/2022', 1)
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount, ServiceId)
+VALUES (2, 4, 580.99, '01/18/2022', 1, 2)
 
 INSERT INTO Sales
-(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
-VALUES (3, 5, 1000.99, '01/02/2022', 1)
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount, ServiceId)
+VALUES (3, 5, 1000.99, '01/02/2022', 1, 3)
 
 INSERT INTO Sales
-(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
-VALUES (1, 3, 720.99, '01/11/2022', 1)
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount, ServiceId)
+VALUES (1, 3, 720.99, '01/11/2022', 1, 2)
 
 INSERT INTO Sales
-(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
-VALUES (4, 2, 680.99, '01/23/2022', 1)
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount, ServiceId)
+VALUES (4, 2, 680.99, '01/23/2022', 1, 1)
 
 INSERT INTO Sales
-(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
-VALUES (5, 5, 360.99, '01/27/2022', 1)
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount, ServiceId)
+VALUES (5, 5, 360.99, '01/27/2022', 1, 1)
 
 INSERT INTO Sales
-(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
-VALUES (3, 3, 140.99, '01/20/2022', 1)
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount, ServiceId)
+VALUES (3, 3, 140.99, '01/20/2022', 1, 3)
 
 INSERT INTO Sales
-(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
-VALUES (2, 3, 890.99, '01/20/2022', 1)
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount, ServiceId)
+VALUES (2, 3, 890.99, '01/20/2022', 1, 4)
 
 INSERT INTO Sales
-(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
-VALUES (1, 2, 990.99, '01/20/2022', 1)
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount, ServiceId)
+VALUES (1, 2, 990.99, '01/20/2022', 1, 3)
 
 INSERT INTO Sales
-(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount)
-VALUES (4, 5, 790.99, '01/20/2022', 1)
+(TavernId, GuestId, SalesPrice, SalesDate, SalesAmount, ServiceId)
+VALUES (4, 5, 790.99, '01/20/2022', 1, 2)
 
 --Seeding Stays Table
 INSERT INTO Stays
@@ -194,6 +194,10 @@ VALUES(4, 4, 4)
 
 INSERT INTO Levels
 (GuestId, ClassId, Level)
+VALUES(4, 2, 10)
+
+INSERT INTO Levels
+(GuestId, ClassId, Level)
 VALUES(5, 5, 15)
 
 --Seeding Classes Table
@@ -213,3 +217,26 @@ VALUES ('Wizard')
 INSERT INTO Classes
 (ClassName)
 VALUES ('Dude')
+
+--Seeding Roles Tables
+
+INSERT INTO Roles
+(RoleName, RoleDescription)
+VALUES ('Admin', 'Administrative permissions allowed.')
+
+INSERT INTO Roles
+(RoleName, RoleDescription)
+VALUES ('User', 'Regular user permissions allowed')
+
+--Seeding Location
+INSERT INTO Locations
+(LocationName)
+VALUES ('New York')
+
+INSERT INTO Locations
+(LocationName)
+VALUES ('San Francisco')
+
+INSERT INTO Locations
+(LocationName)
+VALUES ('Boston')

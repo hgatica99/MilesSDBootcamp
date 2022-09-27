@@ -32,6 +32,9 @@ FROM Rooms
 SELECT *
 FROM Sales
 
+SELECT *
+FROM Roles
+
 --HW 3
 --#2
 SELECT *

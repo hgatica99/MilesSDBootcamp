@@ -48,10 +48,7 @@ WHERE Guests.Id IN (SELECT Levels.GuestId
 				AND Levels.Level > 5
 
 --#7
-SELECT GuestName, ClassName, Level
-FROM (SELECT Guests.GuestName, Classes.ClassName, Levels.Level, MAX(Level) over (PARTITION BY ))
-
-	
+--Tried making this more dynamic but MAX wouldn't work properly when selecting multiple coluns (SELECT Guests.Id, Guests.GuestName, Classes.ClassName, MAX(Levels.Level) Level)
 SELECT Levels.GuestId, MAX(Levels.Level) Level
 FROM Levels
 GROUP BY GuestId

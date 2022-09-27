@@ -53,6 +53,14 @@ SELECT Levels.GuestId, MAX(Levels.Level) Level
 FROM Levels
 GROUP BY GuestId
 
+--#8
+SELECT 
+	*
+FROM GUESTS G
+JOIN Stays S
+	ON G.Id = S.GuestId
+	AND S.StayDate BETWEEN '02/19/2022' AND '02/24/2022'
+
 
 SELECT *
-FROM Guests
+FROM Stays

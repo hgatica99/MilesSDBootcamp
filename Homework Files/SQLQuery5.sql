@@ -143,11 +143,23 @@ VALUES(790.99, 12, 4, 1, '2/20/2022')
 
 INSERT INTO Stays
 (StayRate, SalesId, GuestId, RoomId, StayDate)
+VALUES(390.99, 13, 4, 1, '2/21/2022')
+
+INSERT INTO Stays
+(StayRate, SalesId, GuestId, RoomId, StayDate)
 VALUES(990.99, 11, 1, 2, '2/20/2022')
 
 INSERT INTO Stays
 (StayRate, SalesId, GuestId, RoomId, StayDate)
 VALUES(890.99, 10, 3, 3, '2/20/2022')
+
+INSERT INTO Stays
+(StayRate, SalesId, GuestId, RoomId, StayDate)
+VALUES(890.99, 10, 3, 2, '2/24/2022')
+
+INSERT INTO Stays
+(StayRate, SalesId, GuestId, RoomId, StayDate)
+VALUES(890.99, 10, 3, 4, '2/18/2022')
 
 --Seeding GuestStatus Table
 INSERT INTO GuestStatuses

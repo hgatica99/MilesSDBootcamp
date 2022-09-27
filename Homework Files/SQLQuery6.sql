@@ -67,7 +67,7 @@ CREATE TABLE GuestStatuses
 CREATE TABLE Roles
 (
 	Id INT PRIMARY KEY IDENTITY(1,1),
-	RoleName VARCHAR (250),
+	RoleName VARCHAR(250),
 	RoleDescription VARCHAR(250)
 );
 

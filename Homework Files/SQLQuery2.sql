@@ -32,9 +32,9 @@ FROM Guests
 JOIN Levels ON Guests.Id = Levels.GuestId
 JOIN Classes ON Classes.Id = Levels.ClassId
 WHERE Guests.Id IN (SELECT Levels.GuestId 
-		    FROM Levels
-		    GROUP BY GuestId
-		    HAVING COUNT(GuestId) >= 2)
+					FROM Levels
+					GROUP BY GuestId
+					HAVING COUNT(GuestId) >= 2)
 
 --#6
 SELECT Guests.Id, Guests.GuestName, Classes.ClassName, Levels.Level
@@ -42,10 +42,10 @@ FROM Guests
 JOIN Levels ON Guests.Id = Levels.GuestId
 JOIN Classes ON Classes.Id = Levels.ClassId
 WHERE Guests.Id IN (SELECT Levels.GuestId 
-		    FROM Levels
-		    GROUP BY GuestId
-		    HAVING COUNT(GuestId) >= 1)
-		    AND Levels.Level > 5
+					FROM Levels
+					GROUP BY GuestId
+					HAVING COUNT(GuestId) >= 1)
+				AND Levels.Level > 5
 
 --#7
 --Tried making this more dynamic but MAX wouldn't work properly when selecting multiple coluns (SELECT Guests.Id, Guests.GuestName, Classes.ClassName, MAX(Levels.Level) Level)

@@ -81,11 +81,23 @@ VALUES ('Room 1', 99, 1, 1)
 
 INSERT INTO Rooms
 (RoomName, Price, TavernId, RoomStatusId)
-VALUES ('Room 2', 140, 1, 1)
+VALUES ('Room 2', 140, 2, 1)
 
 INSERT INTO Rooms
 (RoomName, Price, TavernId, RoomStatusId)
-VALUES ('Room 3', 160, 1, 1)
+VALUES ('Room 3', 160, 3, 1)
+
+INSERT INTO Rooms
+(RoomName, Price, TavernId, RoomStatusId)
+VALUES ('Room 4', 89, 1, 1)
+
+INSERT INTO Rooms
+(RoomName, Price, TavernId, RoomStatusId)
+VALUES ('Room 5', 130, 4, 1)
+
+INSERT INTO Rooms
+(RoomName, Price, TavernId, RoomStatusId)
+VALUES ('Room 6', 150, 5, 1)
 
 --Seeding Sales Table
 INSERT INTO Sales
@@ -151,15 +163,15 @@ VALUES(990.99, 11, 1, 2, '2/20/2022')
 
 INSERT INTO Stays
 (StayRate, SalesId, GuestId, RoomId, StayDate)
-VALUES(890.99, 10, 3, 3, '2/20/2022')
+VALUES(890.99, 10, 3, 3, '2/10/2022')
 
 INSERT INTO Stays
 (StayRate, SalesId, GuestId, RoomId, StayDate)
-VALUES(890.99, 10, 3, 2, '2/24/2022')
+VALUES(890.99, 14, 3, 2, '2/24/2022')
 
 INSERT INTO Stays
 (StayRate, SalesId, GuestId, RoomId, StayDate)
-VALUES(890.99, 10, 3, 4, '2/18/2022')
+VALUES(890.99, 15, 3, 4, '2/18/2022')
 
 --Seeding GuestStatus Table
 INSERT INTO GuestStatuses
@@ -177,6 +189,7 @@ VALUES ('Active')
 INSERT INTO ServiceStatuses
 (StatusName)
 VALUES ('Non-Active')
+
 --Seeding RoomStatus Table
 INSERT INTO RoomStatuses
 (StatusName)

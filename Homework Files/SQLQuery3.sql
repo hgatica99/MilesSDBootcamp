@@ -49,8 +49,32 @@ FROM dbo.FinalTable(28)
 CREATE FUNCTION TableNumber5 (@date DATE)
 RETURNS TABLE
 AS
-RETURN (SELECT )
+RETURN (SELECT Rooms.RoomName, Taverns.TavernName
+		FROM Rooms
+		JOIN Taverns ON Rooms.TavernId = Taverns.Id
+		JOIN Stays ON Stays.RoomId = Rooms.Id
+		WHERE NOT @date = Stays.StayDate)
+
+SELECT *
+FROM dbo.TableNumber5('02/18/2022')
+
+--#6
+CREATE FUNCTION TableNumber6 (@min FLOAT, @max FLOAT)
+RETURNS TABLE
+AS
+RETURN (SELECT T.Id TavernId, T.TavernName, R.RoomName, R.Price
+		FROM Taverns T
+		JOIN Rooms R ON R.Id = T.Id
+		WHERE R.Price >= @min AND R.Price <= @max)
+
+--#7
+INSERT INTO Rooms
+(RoomName, Price, TavernId, RoomStatusId)
+VALUES('New Room', (SELECT MIN(Price) FROM dbo.TableNumber6(10.00, 150.00))-0.01, 1, 1)
+
 
 
 SELECT *
-FROM Levels
+FROM Stays
+SELECT *
+FROM Rooms

@@ -2,12 +2,14 @@
 --#1
 SELECT Users.UserName, Roles.RoleName
 FROM Users
-JOIN Roles ON Users.RoleId = Roles.Id
+JOIN Roles 
+	ON Users.RoleId = Roles.Id
 
 --#2
 SELECT Classes.ClassName, COUNT(Levels.GuestId) ClassCount
 FROM Classes
-JOIN Levels ON Levels.ClassId = Classes.Id
+JOIN Levels 
+	ON Levels.ClassId = Classes.Id
 GROUP BY ClassName
 
 --#3
@@ -20,9 +22,9 @@ CASE
 	END AS LevelRange
 FROM Guests
 JOIN Levels 
-ON Guests.Id = Levels.GuestId 
+	ON Guests.Id = Levels.GuestId 
 Join Classes
-ON Classes.Id = Levels.ClassId
+	ON Classes.Id = Levels.ClassId
 
 --#4
 CREATE FUNCTION GetNameClassLevelRange (@level INT)
@@ -37,9 +39,9 @@ RETURN (SELECT GuestName, ClassName, Levels.Level,
 			END AS LevelRange
 		FROM Guests
 		JOIN Levels 
-		ON Guests.Id = Levels.GuestId 
+			ON Guests.Id = Levels.GuestId 
 		Join Classes
-		ON Classes.Id = Levels.ClassId
+			ON Classes.Id = Levels.ClassId
 		WHERE Levels.Level = @level)
 
 SELECT *
@@ -51,8 +53,10 @@ RETURNS TABLE
 AS
 RETURN (SELECT Rooms.RoomName, Taverns.TavernName
 		FROM Rooms
-		JOIN Taverns ON Rooms.TavernId = Taverns.Id
-		JOIN Stays ON Stays.RoomId = Rooms.Id
+		JOIN Taverns 
+			ON Rooms.TavernId = Taverns.Id
+		JOIN Stays 
+			ON Stays.RoomId = Rooms.Id
 		WHERE NOT @date = Stays.StayDate)
 
 SELECT *
@@ -64,7 +68,8 @@ RETURNS TABLE
 AS
 RETURN (SELECT T.Id TavernId, T.TavernName, R.RoomName, R.Price
 		FROM Taverns T
-		JOIN Rooms R ON R.Id = T.Id
+		JOIN Rooms R 
+			ON R.Id = T.Id
 		WHERE R.Price >= @min AND R.Price <= @max)
 
 --#7 Original

@@ -13,7 +13,7 @@ GROUP BY ClassName
 --#3
 SELECT GuestName, ClassName, Levels.Level,
 CASE 
-	WHEN Levels.Level < 5 THEN 'Beginner'
+	WHEN Levels.Level <= 5 THEN 'Beginner'
 	WHEN Levels.Level > 5 AND Levels.Level < 11 THEN 'Intermediate'
 	WHEN Levels.Level > 10 THEN 'Expert'
 	ELSE 'N/A'
@@ -30,7 +30,7 @@ RETURNS TABLE
 AS
 RETURN (SELECT GuestName, ClassName, Levels.Level,
 		CASE 
-			WHEN Levels.Level < 5 THEN 'Beginner'
+			WHEN Levels.Level <= 5 THEN 'Beginner'
 			WHEN Levels.Level > 5 AND Levels.Level < 11 THEN 'Intermediate'
 			WHEN Levels.Level > 10 THEN 'Expert'
 			ELSE 'N/A'

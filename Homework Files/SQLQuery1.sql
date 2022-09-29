@@ -78,9 +78,9 @@ CASE
 	END AS LevelRange
 FROM Guests
 JOIN Levels 
-ON Guests.Id = Levels.GuestId 
+	ON Guests.Id = Levels.GuestId 
 Join Classes
-ON Classes.Id = Levels.ClassId
+	ON Classes.Id = Levels.ClassId
 
 
 --Syntax to update Table data

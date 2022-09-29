@@ -43,10 +43,10 @@ RETURN (SELECT GuestName, ClassName, Levels.Level,
 		WHERE Levels.Level = @level)
 
 SELECT *
-FROM dbo.GetNameClassLevelRange(28)
+FROM dbo.GetNameClassLevelRange(28)  
 
 --#5 
-CREATE FUNCTION RoomsOpenOnDate (@date DATE)
+CREATE FUNCTION GetRoomsOpenOnDate (@date DATE)
 RETURNS TABLE
 AS
 RETURN (SELECT Rooms.RoomName, Taverns.TavernName
@@ -56,10 +56,10 @@ RETURN (SELECT Rooms.RoomName, Taverns.TavernName
 		WHERE NOT @date = Stays.StayDate)
 
 SELECT *
-FROM dbo.RoomsOpenOnDate('02/18/2022')
+FROM dbo.GetRoomsOpenOnDate('02/18/2022')
 
 --#6
-CREATE FUNCTION RoomsInPriceRange (@min FLOAT, @max FLOAT)
+CREATE FUNCTION GetRoomsInPriceRange (@min FLOAT, @max FLOAT)
 RETURNS TABLE
 AS
 RETURN (SELECT T.Id TavernId, T.TavernName, R.RoomName, R.Price
@@ -70,21 +70,21 @@ RETURN (SELECT T.Id TavernId, T.TavernName, R.RoomName, R.Price
 --#7 Original
 INSERT INTO Rooms
 (RoomName, Price, TavernId, RoomStatusId)
-VALUES('New Room', (SELECT MIN(Price) FROM dbo.RoomsInPriceRange(10.00, 150.00))-0.01, 1, 1)
+VALUES('New Room', (SELECT MIN(Price) FROM dbo.GetRoomsInPriceRange(10.00, 150.00))-0.01, 1, 1)[dbo].[TableNumber6]
 
 --#7 Experimental
 INSERT INTO Rooms
 (RoomName, Price, TavernId, RoomStatusId)
 VALUES('New Room', 
-	  (SELECT MIN(Price) FROM dbo.RoomsInPriceRange(10.00, 150.00))-0.01, 
-	  (SELECT TOP 1 T.Id FROM Taverns T WHERE NOT T.Id = (SELECT T2.TavernId FROM dbo.RoomsInPriceRange(10.00, 150.00) T2 WHERE T2.Price = (SELECT MIN(Price) FROM dbo.RoomsInPriceRange(10.00, 150.00)))ORDER BY NEWID()),
+	  (SELECT MIN(Price) FROM dbo.GetRoomsInPriceRange(10.00, 150.00))-0.01, 
+	  (SELECT TOP 1 T.Id FROM Taverns T WHERE NOT T.Id = (SELECT T2.TavernId FROM dbo.GetRoomsInPriceRange(10.00, 150.00) T2 WHERE T2.Price = (SELECT MIN(Price) FROM dbo.GetRoomsInPriceRange(10.00, 150.00)))ORDER BY NEWID()),
 	  1)
 
 
 --Returns Random TavernID from the table returned by Function TableNumber6 that doesn't match the tavern id with the matched price. Future issues are: What if there are 2 taverns with the same price? How will id's be matched?																								  --
 SELECT TOP 1 T.TavernId
-FROM dbo.RoomsInPriceRange(10.00, 150.00) T
-WHERE NOT T.TavernId = (SELECT T2.TavernId FROM dbo.RoomsInPriceRange(10.00, 150.00) T2 WHERE T2.Price = (SELECT MIN(Price) FROM dbo.RoomsInPriceRange(10.00, 150.00)))
+FROM dbo.GetRoomsInPriceRange(10.00, 150.00) T
+WHERE NOT T.TavernId = (SELECT T2.TavernId FROM dbo.GetRoomsInPriceRange(10.00, 150.00) T2 WHERE T2.Price = (SELECT MIN(Price) FROM dbo.GetRoomsInPriceRange(10.00, 150.00)))
 ORDER BY NEWID()
 
 

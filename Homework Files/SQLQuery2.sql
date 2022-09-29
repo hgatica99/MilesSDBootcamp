@@ -4,7 +4,7 @@ SELECT Users.UserName
 FROM Users
 WHERE Users.RoleId = 1
 
---#2 I could add seeds to the location table, and then add an additional join to pull location name instead of locationId.
+--#2.
 SELECT Users.UserName, Locations.LocationName, Roles.RoleName
 FROM Taverns
 JOIN Users ON Users.Id = Taverns.OwnerId

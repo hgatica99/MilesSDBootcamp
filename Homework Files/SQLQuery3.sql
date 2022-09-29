@@ -70,7 +70,7 @@ RETURN (SELECT T.Id TavernId, T.TavernName, R.RoomName, R.Price
 --#7 Original
 INSERT INTO Rooms
 (RoomName, Price, TavernId, RoomStatusId)
-VALUES('New Room', (SELECT MIN(Price) FROM dbo.GetRoomsInPriceRange(10.00, 150.00))-0.01, 1, 1)[dbo].[TableNumber6]
+VALUES('New Room', (SELECT MIN(Price) FROM dbo.GetRoomsInPriceRange(10.00, 150.00))-0.01, 1, 1)
 
 --#7 Experimental
 INSERT INTO Rooms

@@ -22,15 +22,16 @@ CASE
 	END AS LevelRange
 FROM Guests
 JOIN Levels 
-	ON Guests.Id = Levels.GuestId 
+ON Guests.Id = Levels.GuestId 
 Join Classes
-	ON Classes.Id = Levels.ClassId
+ON Classes.Id = Levels.ClassId
 
 --#4
 CREATE FUNCTION GetNameClassLevelRange (@level INT)
 RETURNS TABLE
 AS
-RETURN (SELECT GuestName, ClassName, Levels.Level,
+RETURN (
+		SELECT GuestName, ClassName, Levels.Level,
 		CASE 
 			WHEN Levels.Level <= 5 THEN 'Beginner'
 			WHEN Levels.Level > 5 AND Levels.Level < 11 THEN 'Intermediate'
@@ -42,7 +43,8 @@ RETURN (SELECT GuestName, ClassName, Levels.Level,
 			ON Guests.Id = Levels.GuestId 
 		Join Classes
 			ON Classes.Id = Levels.ClassId
-		WHERE Levels.Level = @level)
+		WHERE Levels.Level = @level
+)
 
 SELECT *
 FROM dbo.GetNameClassLevelRange(28)  
@@ -51,13 +53,15 @@ FROM dbo.GetNameClassLevelRange(28)
 CREATE FUNCTION GetRoomsOpenOnDate (@date DATE)
 RETURNS TABLE
 AS
-RETURN (SELECT Rooms.RoomName, Taverns.TavernName
+RETURN (
+		SELECT Rooms.RoomName, Taverns.TavernName
 		FROM Rooms
 		JOIN Taverns 
 			ON Rooms.TavernId = Taverns.Id
 		JOIN Stays 
 			ON Stays.RoomId = Rooms.Id
-		WHERE NOT @date = Stays.StayDate)
+		WHERE NOT @date = Stays.StayDate
+)
 
 SELECT *
 FROM dbo.GetRoomsOpenOnDate('02/18/2022')
@@ -66,11 +70,13 @@ FROM dbo.GetRoomsOpenOnDate('02/18/2022')
 CREATE FUNCTION GetRoomsInPriceRange (@min FLOAT, @max FLOAT)
 RETURNS TABLE
 AS
-RETURN (SELECT T.Id TavernId, T.TavernName, R.RoomName, R.Price
+RETURN (
+		SELECT T.Id TavernId, T.TavernName, R.RoomName, R.Price
 		FROM Taverns T
 		JOIN Rooms R 
-			ON R.Id = T.Id
-		WHERE R.Price >= @min AND R.Price <= @max)
+			ON R.TavernId = T.Id
+		WHERE R.Price >= @min AND R.Price <= @max
+)
 
 --#7 Original
 INSERT INTO Rooms
@@ -86,7 +92,7 @@ VALUES('New Room',
 	  1)
 
 
---Returns Random TavernID from the table returned by Function TableNumber6 that doesn't match the tavern id with the matched price. Future issues are: What if there are 2 taverns with the same price? How will id's be matched?																								  --
+--Returns Random TavernID from the table returned by Function GetRoomsInPriceRange that doesn't match the tavern id with the matched price. Future issues are: What if there are 2 taverns with the same price? How will id's be matched?																								  --
 SELECT TOP 1 T.TavernId
 FROM dbo.GetRoomsInPriceRange(10.00, 150.00) T
 WHERE NOT T.TavernId = (SELECT T2.TavernId FROM dbo.GetRoomsInPriceRange(10.00, 150.00) T2 WHERE T2.Price = (SELECT MIN(Price) FROM dbo.GetRoomsInPriceRange(10.00, 150.00)))
@@ -99,3 +105,6 @@ SELECT *
 FROM Rooms
 SELECT *
 FROM Taverns
+
+SELECT *
+FROM dbo.GetRoomsInPriceRange(10.00, 150.00)

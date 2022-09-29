@@ -44,7 +44,7 @@ WHERE Guests.Id IN (SELECT Levels.GuestId
 					FROM Levels
 					GROUP BY GuestId
 					HAVING COUNT(GuestId) >= 1)
-				AND Levels.Level > 5
+					AND Levels.Level > 5
 
 --#7
 SELECT Guests.Id, Guests.GuestName, Classes.ClassName, Levels.Level

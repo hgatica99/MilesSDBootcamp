@@ -1,5 +1,4 @@
 --HW 4
-
 --#1
 SELECT Users.UserName
 FROM Users
@@ -48,10 +47,11 @@ WHERE Guests.Id IN (SELECT Levels.GuestId
 				AND Levels.Level > 5
 
 --#7
---Tried making this more dynamic but MAX wouldn't work properly when selecting multiple coluns (SELECT Guests.Id, Guests.GuestName, Classes.ClassName, MAX(Levels.Level) Level)
-SELECT Levels.GuestId, MAX(Levels.Level) Level
-FROM Levels
-GROUP BY GuestId
+SELECT Guests.Id, Guests.GuestName, Classes.ClassName, Levels.Level
+FROM Guests
+JOIN Levels ON Guests.Id = Levels.GuestId
+JOIN Classes ON Classes.Id = Levels.ClassId
+WHERE Levels.level = (SELECT MAX(Levels.Level) FROM Levels)
 
 --#8
 SELECT 

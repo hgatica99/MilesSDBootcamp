@@ -76,12 +76,12 @@ VALUES('New Room', (SELECT MIN(Price) FROM dbo.TableNumber6(10.00, 150.00))-0.01
 INSERT INTO Rooms
 (RoomName, Price, TavernId, RoomStatusId)
 VALUES('New Room', (SELECT MIN(Price) 
-					FROM dbo.TableNumber6(10.00, 150.00))-0.01, (SELECT TOP 1 T.Id
-																 FROM Taverns T
-																 WHERE NOT T.Id = (SELECT T2.TavernId 
-																					FROM dbo.TableNumber6(10.00, 150.00) T2 
-																					WHERE T2.Price = (SELECT MIN(Price) 
-																									  FROM dbo.TableNumber6(10.00, 150.00)))ORDER BY NEWID()), 1)
+		    FROM dbo.TableNumber6(10.00, 150.00))-0.01, (SELECT TOP 1 T.Id
+		    						 FROM Taverns T
+								 WHERE NOT T.Id = (SELECT T2.TavernId 
+										   FROM dbo.TableNumber6(10.00, 150.00) T2 
+										   WHERE T2.Price = (SELECT MIN(Price) 
+												     FROM dbo.TableNumber6(10.00, 150.00)))ORDER BY NEWID()), 1)
 
 --Returns Random TavernID from the table returned by Function TableNumber6 that doesn't match the tavern id with the matched price. Future issues are: What if there are 2 taverns with the same price? How will id's be matched?																								  --
 SELECT TOP 1 T.TavernId

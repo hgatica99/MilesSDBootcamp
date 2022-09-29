@@ -25,7 +25,7 @@ Join Classes
 ON Classes.Id = Levels.ClassId
 
 --#4
-CREATE FUNCTION FinalTable (@level INT)
+CREATE FUNCTION GetNameClassLevelRange (@level INT)
 RETURNS TABLE
 AS
 RETURN (SELECT GuestName, ClassName, Levels.Level,
@@ -43,7 +43,7 @@ RETURN (SELECT GuestName, ClassName, Levels.Level,
 		WHERE Levels.Level = @level)
 
 SELECT *
-FROM dbo.FinalTable(28)  
+FROM dbo.GetNameClassLevelRange(28)
 
 --#5 
 CREATE FUNCTION RoomsOpenOnDate (@date DATE)

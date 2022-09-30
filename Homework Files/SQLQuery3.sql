@@ -78,18 +78,12 @@ RETURN (
 		WHERE R.Price >= @min AND R.Price <= @max
 )
 
---#7 Original
+--#7
+DECLARE @minPrice FLOAT = (SELECT MIN(Price) FROM dbo.GetRoomsInPriceRange(10.00, 150.00))
+DECLARE @randTavernID INT = (SELECT TOP 1 T.Id FROM Taverns T WHERE NOT T.Id = (SELECT T2.TavernId FROM dbo.GetRoomsInPriceRange(10.00, 150.00) T2 WHERE T2.Price = (SELECT MIN(Price) FROM dbo.GetRoomsInPriceRange(10.00, 150.00)))ORDER BY NEWID())
 INSERT INTO Rooms
 (RoomName, Price, TavernId, RoomStatusId)
-VALUES('New Room', (SELECT MIN(Price) FROM dbo.GetRoomsInPriceRange(10.00, 150.00))-0.01, 1, 1)
-
---#7 Experimental
-INSERT INTO Rooms
-(RoomName, Price, TavernId, RoomStatusId)
-VALUES('New Room', 
-	  (SELECT MIN(Price) FROM dbo.GetRoomsInPriceRange(10.00, 150.00))-0.01, 
-	  (SELECT TOP 1 T.Id FROM Taverns T WHERE NOT T.Id = (SELECT T2.TavernId FROM dbo.GetRoomsInPriceRange(10.00, 150.00) T2 WHERE T2.Price = (SELECT MIN(Price) FROM dbo.GetRoomsInPriceRange(10.00, 150.00)))ORDER BY NEWID()),
-	  1)
+Values('New Room', (@minPrice)-0.01, @randTavernID, 1)
 
 
 --Returns Random TavernID from the table returned by Function GetRoomsInPriceRange that doesn't match the tavern id with the matched price. Future issues are: What if there are 2 taverns with the same price? How will id's be matched?																								  --
